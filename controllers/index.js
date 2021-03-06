@@ -141,6 +141,20 @@ module.exports = {
       "create_at|1-12": 1,
     });
   },
+  // 获取我领取的字幕任务
+  "GET /task/subtitle": async (ctx, next) => {
+    ctx.response.body = Mock.mock({
+      "data|1": [
+        {
+          created_at: "@date",
+          "id|10000-99999": 1,
+          "video_id|10000-99999": 1,
+          video_title: "@csentence(10,15)",
+          "status|0-4": 1,
+        },
+      ],
+    });
+  },
   // 获取合集列表
   "GET /compilations": async (ctx, next) => {
     ctx.response.body = createListRes({
@@ -172,6 +186,7 @@ module.exports = {
       "create_at|1-12": 1,
       "watch_id|1": [null, 1],
       "collect_id|1": [null, 1],
+      "is_sub_open|1": [0, 1],
       "compilations|1": [
         null,
         Mock.mock({
@@ -379,10 +394,14 @@ module.exports = {
     ctx.response.body = createListRes({
       "id|+1": 1,
       "order|1-9999": 1,
-      link: "y3227ws5iuu",
+      tx_vid: "y3227ws5iuu",
+      xg_vid: "asdyuausdasihd",
+      bilibili_vid: "yasudbajhgcuyas",
+      yt_vid: "zuxucizhxcasu",
       created_at: "@date",
       title: "@csentence(10,15)",
       "cover|1": coverList,
+      compilations_id: 1,
       "suit|0-15": 1,
       "share_count|1-9999": 1,
       "collect_count|1-9999": 1,
@@ -396,18 +415,6 @@ module.exports = {
   "DELETE /platform/video/:id": async (ctx, next) => {
     ctx.response.body = {};
   },
-  // 获取视频信息
-  // "GET /video/:id": async (ctx, next) => {
-  //   ctx.response.body = Mock.mock({
-  //     "id|10000-99999": 1,
-  //     "user_id|10000-99999": 1,
-  //     src:
-  //       "https://cdn.jsdelivr.net/gh/wt-sml/wutong_cdn/video/bg_room_video.mp4",
-  //     title: "@csentence(10,15)",
-  //     sub_title: "@csentence(700,1200)",
-  //     remark: "@csentence(50,100)",
-  //   });
-  // },
   // 添加视频
   "POST /platform/video": async (ctx, next) => {
     ctx.response.body = {
@@ -431,6 +438,18 @@ module.exports = {
     });
   },
   "POST /platform/video/subtitle": async (ctx, next) => {
+    ctx.response.body = {};
+  },
+  // 添加合集
+  "POST /platform/compilations": async (ctx, next) => {
+    ctx.response.body = { id: 1 };
+  },
+  // 编辑合集
+  "PUT /platform/compilations/:id": async (ctx, next) => {
+    ctx.response.body = {};
+  },
+  // 删除合集
+  "DELETE /platform/compilations/:id": async (ctx, next) => {
     ctx.response.body = {};
   },
 };
