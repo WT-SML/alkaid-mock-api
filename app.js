@@ -11,10 +11,8 @@ if (!(process.env.NODE_ENV === "production")) {
 }
 app.use(
   cors({
-    origin: () =>
-      process.NODE_ENV === "production"
-        ? "https://v.sumoli.com"
-        : "http://localhost:8080",
+    origin: "https://v.sumoli.com",
+    // origin: "http://localhost:8080",
     maxAge: 5, // 指定本次预检请求的有效期，单位为秒。
     credentials: true, // 是否允许发送Cookie
     allowMethods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // 设置所允许的HTTP请求方法
