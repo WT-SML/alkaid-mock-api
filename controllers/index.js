@@ -8,6 +8,7 @@ const createListRes = (template, next = true) =>
   });
 
 const gameList = require("../assets/js/game_list.js");
+const content = require("../assets/js/content.js");
 
 module.exports = {
   "GET /": async (ctx, next) => {
@@ -28,5 +29,12 @@ module.exports = {
   // 游戏
   "GET /games": async (ctx, next) => {
     ctx.response.body = gameList;
+  },
+  // 内容
+  "GET /content/:id": async (ctx, next) => {
+    ctx.response.body = {
+      id: ctx.request.params.id,
+      content,
+    };
   },
 };
