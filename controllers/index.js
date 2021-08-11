@@ -14,27 +14,27 @@ module.exports = {
   "GET /": async (ctx, next) => {
     ctx.response.body = "这是芜桐的node_mock服务器，提供mock数据服务";
   },
-  // 登录
-  "POST /login": async (ctx, next) => {
-    ctx.response.body = Mock.mock({
-      "id|10000000-99999999": 1,
-      name: "@cname",
-      "avatar|1": "@image(50x50)",
-    });
-  },
-  // 登出
-  "GET /logout": async (ctx, next) => {
-    ctx.response.body = {};
-  },
-  // 游戏
-  "GET /games": async (ctx, next) => {
-    ctx.response.body = gameList;
-  },
-  // 内容
-  "GET /content/:id": async (ctx, next) => {
-    ctx.response.body = {
-      id: ctx.request.params.id,
-      content,
-    };
-  },
+  // // 登录
+  // "POST /login": async (ctx, next) => {
+  //   ctx.response.body = Mock.mock({
+  //     "id|10000000-99999999": 1,
+  //     name: "@cname",
+  //     "avatar|1": "@image(50x50)",
+  //   });
+  // },
+  // // 登出
+  // "GET /logout": async (ctx, next) => {
+  //   ctx.response.body = {};
+  // },
+  // // 游戏
+  // "GET /games": async (ctx, next) => {
+  //   ctx.response.body = gameList;
+  // },
+  // // 内容
+  // "GET /content/:id": async (ctx, next) => {
+  //   ctx.response.body = {
+  //     id: ctx.request.params.id,
+  //     content,
+  //   };
+  // },
 };
